@@ -1,0 +1,92 @@
+<?php
+ini_set('session.gc_maxlifetime', 30*60);
+session_start();
+
+include_once("lib/config.php");
+include_once("function/function_apkt_master.php");
+
+
+$VAR_ID_MASTER=$_POST['ID_MASTER'];
+$VAR_ID_PELANGGAN=$_POST['ID_PELANGGAN'];
+$VAR_NOMOR_LAPOR=$_POST['NOMOR_LAPOR'];
+$VAR_NAMA=$_POST['NAMA'];
+$VAR_ALAMAT=$_POST['ALAMAT'];
+$VAR_POSKO=$_POST['POSKO'];
+$VAR_NOMOR_TELEPON=$_POST['NOMOR_TELEPON'];
+$VAR_DESKRIPSI=$_POST['DESKRIPSI'];
+$VAR_PENYEBAB=$_POST['PENYEBAB'];
+$VAR_TANGGAL_BUAT=$_POST['TANGGAL_BUAT'];
+$VAR_TANGGAL_PADAM=$_POST['TANGGAL_PADAM'];
+$VAR_TANGGAL_NYALA=$_POST['TANGGAL_NYALA'];
+$VAR_TANGGAL_LAPOR=$_POST['TANGGAL_LAPOR'];
+$VAR_KETERANGAN=$_POST['KETERANGAN'];
+$VAR_STATUS_DATA=$_POST['STATUS_DATA'];
+$VAR_STATUS_CALL=$_POST['STATUS_CALL'];
+$VAR_STATUS_CALL_PHONE=$_POST['STATUS_CALL_PHONE'];
+$VAR_KODE_DISTRIBUSI=$_POST['KODE_DISTRIBUSI'];
+$VAR_KODE_AREA=$_POST['KODE_AREA'];
+$VAR_KODE_UNIT=$_POST['KODE_UNIT'];
+$VAR_KODE_RAYON=$_POST['KODE_RAYON'];
+$VAR_BULAN_TAHUN=$_POST['BULAN_TAHUN'];
+$VAR_UPLOAD_PENGGUNA=$_POST['UPLOAD_PENGGUNA'];
+$VAR_UPLOAD_FILE=$_POST['UPLOAD_FILE'];
+$VAR_UPLOAD_TANGGAL=$_POST['UPLOAD_TANGGAL'];
+$VAR_INFORMASI_01='1';
+$VAR_INFORMASI_02='2';
+$VAR_INFORMASI_03='3';
+$VAR_INFORMASI_04='4';
+$VAR_INFORMASI_05='5';
+$VAR_INFORMASI_06='6';
+$VAR_INFORMASI_07='7';
+$VAR_INFORMASI_08='8';
+$VAR_INFORMASI_09='9';
+$VAR_INFORMASI_10='10';
+
+
+$return_add_master = apkt_master_insert(
+		$VAR_ID_MASTER, 
+		$VAR_ID_PELANGGAN, 
+		$VAR_NOMOR_LAPOR, 
+		$VAR_NAMA, 
+		$VAR_ALAMAT, 
+		$VAR_POSKO, 
+		$VAR_NOMOR_TELEPON, 
+		$VAR_DESKRIPSI, 
+		$VAR_PENYEBAB, 
+		$VAR_TANGGAL_BUAT, 
+		$VAR_TANGGAL_PADAM, 
+		$VAR_TANGGAL_NYALA, 
+		$VAR_TANGGAL_LAPOR, 
+		$VAR_KETERANGAN, 
+		$VAR_STATUS_DATA, 
+		$VAR_STATUS_CALL, 
+		$VAR_STATUS_CALL_PHONE, 
+		$VAR_KODE_DISTRIBUSI, 
+		$VAR_KODE_AREA, 
+		$VAR_KODE_UNIT, 
+		$VAR_KODE_RAYON, 
+		$VAR_BULAN_TAHUN, 
+		$VAR_UPLOAD_PENGGUNA, 
+		$VAR_UPLOAD_FILE, 
+		$VAR_UPLOAD_TANGGAL, 
+		$VAR_INFORMASI_01,
+		$VAR_INFORMASI_02,
+		$VAR_INFORMASI_03,
+		$VAR_INFORMASI_04,
+		$VAR_INFORMASI_05,
+		$VAR_INFORMASI_06,
+		$VAR_INFORMASI_07,
+		$VAR_INFORMASI_08,
+		$VAR_INFORMASI_09,
+		$VAR_INFORMASI_10
+		);
+
+
+if ($return_add_master==1) {
+	echo '<script language="javascript">alert("Data Master Berhasil di Simpan")</script>';
+	echo '<script language="javascript">window.location = "master.php"</script>';
+} else {
+	echo '<script language="javascript">alert("Data Master Gagal di Simpan")</script>';
+	echo '<script language="javascript">window.location = "master.php"</script>';
+} 
+?>

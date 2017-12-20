@@ -1,0 +1,1 @@
+<span class="_css_font_default_11">CallBack Center (CBC) Versi 2.0 &copy; 2015 - PT. PLN (Persero) Distribusi Jakarta Raya. All Rights Reserved <BR><BR>Untuk memperoleh user login silahkan email ke : pepen.suwargana@pln.co.id</span>

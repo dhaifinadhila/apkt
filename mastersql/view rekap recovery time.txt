@@ -1,0 +1,16 @@
+create materialized view MV_APKT_REKAP_RECOVERY_TIME as
+select p.kode_area,
+a.nama_area,
+count(distinct case when mc.jawaban_4 ='1' then mc.nomor_lapor end  ) as tidak_lebih_dr_1,
+count(distinct case when mc.jawaban_4 ='2' then mc.nomor_lapor end  ) as dua_sd_3,
+count(distinct case when mc.jawaban_4 ='3' then mc.nomor_lapor end  ) as empat_sd_12,
+count(distinct case when mc.jawaban_4 ='4' then mc.nomor_lapor end  ) as blm_nyala,
+count(distinct case when mc.jawaban_4 ='5' then mc.nomor_lapor end  ) as tdk_padam,
+count(distinct case when mc.jawaban_4 is null then mc.nomor_lapor end  ) as jawaban_kosong,
+count(distinct nomor_lapor) as total_pelanggan,
+MC.BULAN_TAHUN AS BULAN_TAHUN
+from apkt_master_call mc, apkt_pengguna p, apkt_area a
+where mc.id_user=p.id_user
+and p.kode_area = a.kode_area
+group by p.kode_area , a.nama_area, MC.BULAN_TAHUN
+order by p.kode_area  ASC 

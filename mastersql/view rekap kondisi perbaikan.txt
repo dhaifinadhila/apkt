@@ -1,0 +1,15 @@
+create materialized view MV_APKT_REKAP_PERBAIKAN as
+select p.kode_area,
+a.nama_area,
+count(distinct case when mc.jawaban_5 ='1' then mc.nomor_lapor end  ) as normal,
+count(distinct case when mc.jawaban_5 ='2' then mc.nomor_lapor end  ) as sementara,
+count(distinct case when mc.jawaban_5 ='3' then mc.nomor_lapor end  ) as langsung_via_pembatas,
+count(distinct case when mc.jawaban_5 ='4' then mc.nomor_lapor end  ) as langsung,
+count(distinct case when mc.jawaban_5 is null then mc.nomor_lapor end  ) as jawaban_kosong,
+count(distinct nomor_lapor) as total_pelanggan,
+MC.BULAN_TAHUN AS BULAN_TAHUN
+from apkt_master_call mc, apkt_pengguna p, apkt_area a
+where mc.id_user=p.id_user
+and p.kode_area = a.kode_area
+group by p.kode_area , a.nama_area, MC.BULAN_TAHUN
+order by p.kode_area  ASC 
